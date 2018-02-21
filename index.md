@@ -5,9 +5,9 @@ You can use the [editor on GitHub](https://github.com/elfcandy/Doc_Test/edit/mas
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 
-[gcc user guide](https://github.com/elfcandy/Doc_Test/edit/master/gcc_user_guide.md)
+[gcc user guide](https://elfcandy.github.io/Doc_Test/gcc_user_guide.md)
 
-[TEST](https://github.com/elfcandy/Doc_Test/edit/master/test.html)
+[TEST](https://elfcandy.github.io/Doc_Test/test.html)
 
 
 ### Markdown
