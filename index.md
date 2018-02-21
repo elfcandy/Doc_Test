@@ -7,6 +7,8 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 [gcc user guide](https://github.com/elfcandy/Doc_Test/edit/master/gcc_user_guide.md)
 
+[TEST](https://github.com/elfcandy/Doc_Test/edit/master/Test.html)
+
 
 ### Markdown
 
