@@ -4,6 +4,10 @@ You can use the [editor on GitHub](https://github.com/elfcandy/Doc_Test/edit/mas
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
+
+[gcc user guide](https://github.com/elfcandy/Doc_Test/edit/master/gcc_user_guide.md)
+
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
@@ -15,6 +19,8 @@ Syntax highlighted code block
 ## Header 2
 
 #git使用总结
+
+
 ### Header 3
 
 - Bulleted
