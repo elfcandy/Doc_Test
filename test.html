@@ -11,6 +11,174 @@
 
          gcc user guide </script>
 
+#if 0
+#include <stdio.h>
+#include <unistd.h>
+#include <stdint.h>
+
+//#include <stdlib.h>
+//#include <string.h>
+
+typedef void (*myown_call)(void);
+
+extern myown_call _myown_start;
+extern myown_call _myown_end;
+
+#define _init __attribute__((unused, section(".myown")))
+#define func_init(func) myown_call _fn_##func _init = func
+
+static void mspec1(void)
+{
+        write(1, "aha!\n", 5);
+}
+
+static void mspec2(void)
+{
+        write(1, "aloha!\n", 7);
+}
+
+static void mspec3(void)
+{
+        write(1, "hello!\n", 7);
+}
+
+
+func_init(mspec1);
+func_init(mspec2);
+func_init(mspec3);
+
+
+/* exactly like below:
+static myown_call mc1  __attribute__((unused, section(".myown"))) = mspec1;
+static myown_call mc2  __attribute__((unused, section(".myown"))) = mspec2;
+static myown_call mc3  __attribute__((unused, section(".myown"))) = mspec3;
+*/
+
+
+void do_initcalls(void)
+{
+        myown_call *call_ptr = &_myown_start;
+        do {
+                fprintf (stderr, "call_ptr: %p\n", call_ptr);
+                (*call_ptr)();
+                ++call_ptr;
+        } while (call_ptr < &_myown_end);
+
+}
+
+int main(void)
+{
+        do_initcalls();
+        return 0;
+}
+#endif
+
+
+
+#if 0
+#include <stdarg.h>
+#include <stdio.h>
+
+int sum(int, ...);
+
+int main()
+{
+   printf("Sum of 15 and 56 = %d",  sum(2, 15, 56) );
+   return 0;
+}
+
+int sum(int num_args, ...)
+{
+   int val = 0;
+   va_list ap;
+   int i;
+
+   va_start(ap, num_args);
+   for(i = 0; i < num_args; i++) 
+   {
+      val += va_arg(ap, int);
+   }
+   va_end(ap);
+ 
+   return val;
+}
+#endif
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+char *stall_pipe_sharing_type[7] = {
+		"SHARING_FOR_PAUSE",
+		"SHARING_FOR_DM_CACHE",
+		"SHARING_FOR_DM_NOCACHE",
+		"SHARING_FOR_DM_WBUF_FULL",
+		"SHARING_FOR_DM_TO_ITCM",
+		"SHARING_FOR_PM_CACHE",
+		"SHARING_FOR_PM_NOCACHE"
+	};
+
+typedef struct {
+	int f1;
+	struct b_1 *b;
+}a_1;
+
+struct {
+	int f2;
+	a_1 *a;
+}b_1;
+
+
+typedef enum {
+	A_1 = 0,
+	A_2,
+	A_3 = 0,
+	C1_123
+}enum_A;
+
+typedef enum {
+	B_1 = 0,
+	B_2,
+	B_3,
+	C2_123
+}enum_B;
+
+
+void main(void)
+{
+	a_1 *value_1; 
+
+	char format[100] = {A_1};
+	unsigned int unit_len;
+
+	unit_len = sizeof(long);
+//	sprintf(format, "long = %d", unit_len);
+	fprintf(stderr, "long = %d\n", unit_len);
+	unit_len = sizeof(unsigned int);
+	fprintf(stderr, "unsigned int = %d\n", unit_len);
+	unit_len = sizeof(unsigned long);
+	fprintf(stderr, "unsigned long = %d\n", unit_len);
+	unit_len = sizeof(unsigned long long);
+	fprintf(stderr, "unsigned long long = %d\n", unit_len);
+
+	//char *ptr;
+	//ptr = &stall_pipe_sharing_type[0][0]; 
+	//ptr += 1;
+	value_1 = (a_1 *)calloc(1, sizeof(a_1));
+	value_1->f1 += B_3;
+
+	//sprintf(format,"%d",(unsigned int)value_1->b);
+}
+
+
+
+
+
+
          gcc使用总结: </script>
 
          1、使用gcc进行编译的说明：</script>
