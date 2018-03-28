@@ -23,6 +23,37 @@ Syntax highlighted code block
 #git使用总结
 
 
+CC = gcc
+LD = ld
+CC_FLAGS = -c -g -O0
+LD_FLAGS = -T
+#-lc
+LD_FILE = s.lds
+
+#successfully ops:
+#1> gcc main.c -Wl,-Ts.lds
+#2> gcc -c -g -O0 main.c -Wl,-Ts.lds
+#3> gcc -c -g -O0 main.c
+#   gcc -o ./a.out -Wl,-Ts.lds ./main.o
+#            (-Wl is Optional)
+
+
+    # -Wall -Werror 
+    # -fPIC
+
+all:
+	./generate_ld_file.sh ${LD_FILE}
+	${CC} ${CC_FLAGS} main.c -o ./main.o
+	${CC} -o a.out ${LD_FLAGS} ${LD_FILE} ./*.o
+
+#below is error
+#	${LD} ${LD_FLAGS}s.lds ./main.o -o ./a.out
+
+clean:
+	rm -rf ./*.o ./*.out ${LD_FILE}
+
+
+
 ### Header 3
 
 - Bulleted
