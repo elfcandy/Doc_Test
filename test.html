@@ -1,3 +1,298 @@
+
+
+#include <map>
+#include <iostream>
+
+IP_BEGIN_NAMESPACE
+
+class BuildIP : public IPCircuit {
+	public:
+		ROMBist ();
+		virtual ~ROMBist ();
+	public:
+		unsigned Process ();
+	private:
+		std::map <int, std::string>   intToStr;
+		std::map <std::string, int>   strToInt;
+		std::map <int, int>   intToInt;
+		std::ostringstream oss;
+
+
+
+}
+
+IP_END_NAMESPACE
+
+
+#if 0
+//#include <functional>
+//#include <ext/hash_map>
+#include <hash_map>
+#include <iostream>
+
+using namespace __gnu_cxx;
+
+namespace __gnu_cxx
+{
+	template<> struct hash<std::string>
+	{
+		size_t operator()(const std::string & s) const
+		{
+			return __stl_hash_string(s.c_str());
+		}
+	};
+}
+
+/*
+namespace __gnu_cxx
+{
+	template<> struct hash< std::string >
+	{
+		size_t operator()( const std::string& x ) const
+		{
+			return hash< const char* >()( x.c_str() );
+		}
+   	 };
+}
+*/
+
+
+int main()
+{
+/*
+	typedef pair <int, int> Int_Pair;
+    //std::hash <int> hasher;
+	hash_map<int, int> hasher;
+	hasher.insert(pair<int, int>(1, 23));
+	hasher.insert ( Int_Pair ( 2, 20 ) );
+	hasher.insert ( Int_Pair ( 3, 30 ) );
+
+	hash_map<int, int>::iterator it;
+	it = hasher.find(1);
+    //cout << "The element of hash_map hm1 with a key of 1 is:" << it -> second << "." << endl;
+	std::cout << "The element of hash_map hasher with a key of 1 is: " << it -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 1 is: " << it -> second << "." << '\n';
+	it = hasher.find(3);
+	std::cout << "The element of hash_map hasher with a key of 3 is: " << it -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 3 is: " << it -> second << "." << '\n';
+
+	hasher.erase(it);
+	std::cout << "The element of hash_map hasher with a key of 1 is: " << it -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 1 is: " << it -> second << "." << '\n';
+    //cout << hasher(1) << endl;
+    //cout << hasher(2) << endl;
+    //cout << hasher(3) << endl;
+    //cout << hasher(4) << endl;
+*/
+
+	hash_map<std::string, int> hashstring;
+	hashstring.insert(pair<std::string, int>("1", 111));
+	hashstring.insert(pair<std::string, int>("aaa", 222));
+	hashstring.insert(pair<std::string, int>("bbb", 333));
+	hash_map<std::string, int>::iterator itstring;
+
+	itstring = hashstring.find("1");
+	std::cout << "The element of hash_map hasher with a key of 3 is: " << itstring -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 3 is: " << itstring -> second << "." << '\n';
+	hashstring.erase(itstring);
+	std::cout << "The element of hash_map hasher with a key of 3 is: " << itstring -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 3 is: " << itstring -> second << "." << '\n';
+	itstring = hashstring.find("bbb");
+	std::cout << "The element of hash_map hasher with a key of 3 is: " << itstring -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 3 is: " << itstring -> second << "." << '\n';
+
+    return 0;
+}
+#endif
+
+
+#if 0
+//#include <functional>
+#include <ext/hash_map>
+#include <hash_map>
+#include <iostream>
+
+using namespace __gnu_cxx;
+
+
+int main()
+{
+	typedef pair <int, int> Int_Pair;
+    //std::hash <int> hasher;
+	hash_map<int , int> hasher;
+	hasher.insert(pair<int, int>(1, 23));
+	hasher.insert ( Int_Pair ( 2, 20 ) );
+	hasher.insert ( Int_Pair ( 3, 30 ) );
+
+	hash_map<int, int>::iterator it;
+	it = hasher.find(1);
+    //cout << "The element of hash_map hm1 with a key of 1 is:" << it -> second << "." << endl;
+	std::cout << "The element of hash_map hasher with a key of 1 is: " << it -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 1 is: " << it -> second << "." << '\n';
+	it = hasher.find(3);
+    //cout << "The element of hash_map hm1 with a key of 1 is:" << it -> second << "." << endl;
+	std::cout << "The element of hash_map hasher with a key of 3 is: " << it -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 3 is: " << it -> second << "." << '\n';
+	hasher.erase(it);
+	std::cout << "The element of hash_map hasher with a key of 1 is: " << it -> first << "." << '\n';
+	std::cout << "The element of hash_map hasher with a value of 1 is: " << it -> second << "." << '\n';
+    //cout << hasher(1) << endl;
+    //cout << hasher(2) << endl;
+    //cout << hasher(3) << endl;
+    //cout << hasher(4) << endl;
+
+    return 0;
+}
+
+#endif
+
+
+#if 0
+#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <ext/hash_map>
+using namespace __gnu_cxx;
+ 
+int main(int argc, char** argv)
+{
+	hash_map<int , int> hm;
+	hm.insert(pair<int, int>(1, 23));
+	hash_map<int, int>::iterator it;
+	it = hm.find(1);
+	//std::cout << "nts1 and nts2: " << (ptr_hash(nts1)==ptr_hash(nts2)) << '\n';
+	//std::cout << "The element of hash_map hm1 with a key of 2 is: " << it << "." << '\n';
+	cout << "The element of hash_map hm1 with a key of 2 is: " << it -> second << "." << endl;
+	hm.erase(it);
+	return 0;
+}
+#endif
+
+#if 0
+// hash_map_find.cpp
+// compile with: /EHsc
+#define _DEFINE_DEPRECATED_HASH_CLASSES 0
+#include <hash_map>
+#include <iostream>
+
+#include <functional>
+
+//using namespace std;
+
+using namespace std;
+//using namespace stdext;
+
+int main( )
+{
+	hash_map <int, int> hm1;
+	hash_map <int, int> :: const_iterator hm1_AcIter, hm1_RcIter;
+	typedef pair <int, int> Int_Pair;
+
+	hm1.insert ( Int_Pair ( 1, 10 ) );
+	hm1.insert ( Int_Pair ( 2, 20 ) );
+	hm1.insert ( Int_Pair ( 3, 30 ) );
+
+	hm1_RcIter = hm1.find( 2 );
+	cout << "The element of hash_map hm1 with a key of 2 is: " << hm1_RcIter -> second << "." << endl;
+
+	// If no match is found for the key, end( ) is returned
+	hm1_RcIter = hm1.find( 4 );
+
+	if ( hm1_RcIter == hm1.end( ) )
+		cout << "The hash_map hm1 doesn't have an element " << "with a key of 4." << endl;
+	else
+		cout << "The element of hash_map hm1 with a key of 4 is: " << hm1_RcIter -> second << "." << endl;
+
+	// The element at a specific location in the hash_map can be found 
+	// using a dereferenced iterator addressing the location
+	hm1_AcIter = hm1.end( );
+	hm1_AcIter--;
+	hm1_RcIter = hm1.find( hm1_AcIter -> first );
+	cout << "The element of hm1 with a key matching " << "that of the last element is: " << hm1_RcIter -> second << "." << endl;
+}
+#endif
+
+
+
+#if 0
+#include <iostream>
+#include <functional>
+#include <string>
+
+int main ()
+{
+	char nts1[] = "Test";
+	char nts2[] = "Test";
+	std::string str1 (nts1);
+	std::string str2 (nts2);
+
+	std::hash<char*> ptr_hash;
+	std::hash<std::string> str_hash;
+
+	std::cout << "same hashes:\n" << std::boolalpha;
+	std::cout << "nts1 and nts2: " << (ptr_hash(nts1)==ptr_hash(nts2)) << '\n';
+	std::cout << "str1 and str2: " << (str_hash(str1)==str_hash(str2)) << '\n';
+
+	return 0;
+}
+#endif
+
+
+#if 0
+#include <iostream>
+#include <functional>
+
+using namespace std;
+
+int main()
+{
+    std::hash <int> hasher;
+    cout << hasher(2) << endl;
+    cout << hasher(3) << endl;
+    cout << hasher(4) << endl;
+
+    return 0;
+}
+#endif
+
+
+#if 0
+#include <iostream>
+#include <functional>
+#include <string>
+using namespace std;
+ 
+//int _tmain(int argc, char* argv[])
+int _tmain(int argc, _TCHAR* argv[])
+{
+	char nts1[] = "Test";
+	char nts2[] = "Test";
+	string str1 (nts1);
+	string str2 (nts2);
+						 
+	hash<char*> ptr_hash;
+	hash<string> str_hash;
+								 
+	cout<<"hash value of nts1: "<<ptr_hash(nts1)<<endl;
+	cout<<"hash value of nts2: "<<ptr_hash(nts2)<<endl;
+	cout<<"hash value of str1: "<<str_hash(str1)<<endl;
+	cout<<"hash value of str2: "<<str_hash(str2)<<endl;
+				 
+	cout << "same hashes:\n" << boolalpha;
+	cout << "nts1 and nts2: " << (ptr_hash(nts1)==ptr_hash(nts2)) << '\n';
+	cout << "str1 and str2: " << (str_hash(str1)==str_hash(str2)) << '\n';
+	 
+	return 0;
+}
+
+#endif
+
+
+
+
+
+
+===============================================================================
 https://blog.csdn.net/qq632544991p/article/details/51713903
 https://blog.csdn.net/wesleyluo/article/details/7046865
 
