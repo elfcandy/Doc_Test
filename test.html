@@ -1,5 +1,81 @@
 
+/class BuildIP :: public IPCircuit {
+class BuildIP
+{
+//	public:
+//		BuildIP();
+//		virtual ~BuildIP();
+	public:
+		unsigned Process ();
+	private:
+		std::map <int, std::string>  intToStr;
+		std::map <int, int>  		 intToInt;
 
+		std::map <std::string, int>  mapStr;
+		std::map <std::string, int>::iterator itStr;
+//		std::ostringstream oss;
+	private:
+		unsigned InitMap();
+		unsigned SearchMap();
+};
+
+unsigned BuildIP :: Process()
+{
+	InitMap();
+	SearchMap();
+}
+
+unsigned BuildIP :: InitMap()
+{
+	//mapStr.insert( StrToInt_Pair ("1", 111) );
+	//mapStr.insert( ("aaa", 222) );
+	//mapStr.insert( StrToInt_Pair ("bbb", 333) );
+	mapStr["1"] = 111;
+	mapStr["aa"] = 222;
+	mapStr["bb"] = 333;
+	mapStr["cc"] = 444;
+	return 1;
+}
+
+unsigned BuildIP :: SearchMap()
+{
+	//std::map <std::string, int>::iterator itStr;
+	itStr = mapStr.find("1");
+	std::cout << "The element of map: a key is: " << itStr->first << "; a value is: "<< itStr->second << "." << '\n';
+	itStr = mapStr.find("aa");
+	std::cout << "The element of map: a key is: " << itStr->first << "; a value is: "<< itStr->second << "." << '\n';
+	itStr = mapStr.find("bb");
+	std::cout << "The element of map: a key is: " << itStr->first << "; a value is: "<< itStr->second << "." << '\n';
+	itStr = mapStr.find("cc");
+	std::cout << "The element of map: a key is: " << itStr->first << "; a value is: "<< itStr->second << "." << '\n';
+
+	mapStr.erase("aa");
+	itStr = mapStr.find("aa");
+	if ( itStr == mapStr.end() ) {
+		std::cout << "This str \"aa\" doesn't exist." << '\n';
+	} else {
+		std::cout << "The element of map: a key is: " << itStr->first << "; a value is: "<< itStr->second << "." << '\n';
+	}
+	itStr = mapStr.find("bb");
+	std::cout << "The element of map: a key is: " << itStr->first << "; a value is: "<< itStr->second << "." << '\n';
+
+	mapStr.clear();
+	if (mapStr.find("cc") == mapStr.end()) {
+		std::cout << "This str \"cc\" doesn't exist." << '\n';
+	}
+	return 1;
+}
+
+
+int main()
+{
+	BuildIP Build_IP;
+	Build_IP.Process();
+    return 0;
+}
+
+
+============================================================================================================
 #include <map>
 #include <iostream>
 
